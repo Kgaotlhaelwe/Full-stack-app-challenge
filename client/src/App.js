@@ -27,31 +27,11 @@ function App() {
   })
   
   return (
-    <div >
-   <div class="container">
-<table class="w3-table-all  w3-centered mt-5">
-  <tr>
-      <th >Height</th>
-      <th class="pl-8">Hash</th>
-      <th >Time</th>
-      </tr>
-  {
-        data.map(el =>
-          <tr>
-      
-          <td>{el.height}</td>
-          <td>{el.hash}</td>
-          <td>{el.time}</td>
-        </tr>
-          )
-    }
-   
-   </table>
-</div>
 
-
+    <div>
+      fedrfrerferfewfwe
     </div>
-  );
+  ) ;
 }
 
 export default App;
