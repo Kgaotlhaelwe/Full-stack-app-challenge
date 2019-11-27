@@ -1,50 +1,57 @@
-import React , {useState , useEffect ,  Component } from 'react' ;
-
+import React, { useState, useEffect, Component } from 'react';
+import * as moment from 'moment';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState([]);
+  const [latestblockchain, setData] = useState([]);
   const [details, setDatas] = useState([]);
 
   useEffect(() => {
     fetch("/blockchainlist")
       .then(response => response.json())
-      .then(data =>{
-       // console.log(data.data.blocks)
+      .then(data => {
+        // console.log(data.data.blocks)
         //console.log(data.data.blocks)
-        setData(data.data.blocks) 
+        setData(data.data.blocks)
       });
 
-      
+
 
   })
-  
+
   return (
-    <div >
-   <div class="container">
-<table class="w3-table-all  w3-centered mt-5">
-  <tr>
-      <th >Height</th>
-      <th class="pl-8">Hash</th>
-      <th >Time</th>
-      </tr>
-  {
-        data.map(el =>
+
+    <div class="container">
+
+      <h3 class="text-center">Latest block chain</h3>
+
+      <table class="table table-striped">
+        <thead>
           <tr>
-      
-          <td>{el.height}</td>
-          <td>{el.hash}</td>
-          <td>{el.time}</td>
-        </tr>
-          )
-    }
-   
-   </table>
-</div>
-
-
+            <th scope="col">Height</th>
+            <th scope="col">Hash</th>
+            <th scope="col">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            latestblockchain.map(el =>
+              <tr>
+                <td>{el.height}</td>
+                <td>{el.hash.substring(0, 25)}</td>
+                <td>{moment(el.time).format('ll')}</td>
+              </tr>
+            )
+          }
+        </tbody>
+      </table>
     </div>
+
+
+
+
+
   );
 }
 
