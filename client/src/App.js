@@ -5,9 +5,8 @@ import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
-  const [details, setDatas] = useState([]);
-
-  useEffect(() => {
+ 
+useEffect(() => {
     fetch("http://localhost:5000")
       .then(response => response.json())
       .then(data =>{
@@ -16,13 +15,7 @@ function App() {
         setData(data.data.blocks) 
       });
 
-      fetch("http://localhost:5000/details")
-      .then(response => response.json())
-      .then(data =>{
-        console.log(data.data)
-        console.log(data.data.data)
-        //setData(data.data.blocks) 
-      });
+      
 
   })
   
