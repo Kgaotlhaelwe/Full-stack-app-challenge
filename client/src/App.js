@@ -8,7 +8,7 @@ function App() {
   const [details, setDatas] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000")
+    fetch("/blockchainlist")
       .then(response => response.json())
       .then(data =>{
        // console.log(data.data.blocks)
@@ -16,13 +16,7 @@ function App() {
         setData(data.data.blocks) 
       });
 
-      fetch("http://localhost:5000/details")
-      .then(response => response.json())
-      .then(data =>{
-        console.log(data.data)
-        console.log(data.data.data)
-        //setData(data.data.blocks) 
-      });
+      
 
   })
   

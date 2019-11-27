@@ -9,7 +9,8 @@ app.use(express.json())
 app.use(cors()) ;
 app.use(bodyParser.urlencoded({ extended: false })) ;
 app.use(bodyParser.json())
-app.get('/', async (req, res)=> {
+
+app.get('/blockchainlist', async (req, res)=> {
 
 const response = await  axios.get("https://blockchain.info/blocks?format=json") ;
 
