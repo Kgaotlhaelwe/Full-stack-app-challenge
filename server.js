@@ -4,6 +4,7 @@ const cors  = require('cors');
 const axios = require('axios');
 var bodyParser = require('body-parser');
 const path = require('path');
+
 app.use(express.json())
 app.use(cors()) ;
 app.use(bodyParser.urlencoded({ extended: false })) ;
