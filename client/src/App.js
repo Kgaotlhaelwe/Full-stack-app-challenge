@@ -18,11 +18,11 @@ function App() {
         setData(data.data.blocks)
       });
 
-      fetch("/details")
+    fetch("/details")
       .then(response => response.json())
       .then(data => {
-         console.log(data.data)
-      
+        console.log(data.data)
+
         setDatas(data.data)
       });
 
@@ -36,59 +36,65 @@ function App() {
   return (
 
     <div class="container">
-
       <h3 class="text-center">Latest block chain</h3>
-    
-      <table class="table table-striped">
-        <thead>
+
+      
+
+      <table class="w3-table-all w3-centered w-75 ml-5">
+        <tr style ={{backgroundColor:'#46b3e6'}}>
+          <th>Height</th>
+          <th>Hash</th>
+          <th>Time</th>
+
+         
+          <th>    </th>
+        </tr>
+
+
+        {latestblockchain.map(el =>
           <tr>
-            <th scope="col">Height</th>
-            <th scope="col">Hash</th>
-            <th scope="col">Time</th>
+
+            <td>{el.height}</td>
+            <td>{el.hash.substring(0, 25)}</td>
+            <td>{moment(el.time).format('ll')}</td>
+            <button class ="btn btn-outline-info  btn-sm mt-2 "  onClick={handleShow}>View Details </button>
           </tr>
-        </thead>
-        <tbody>
-          {
-            latestblockchain.map(el =>
-              <tr>
-                <td>{el.height}</td>
-                <td>{el.hash.substring(0, 25)}</td>
-                <td>{moment(el.time).format('ll')}</td>
-                <button  onClick={handleShow}>View Details </button>
-              </tr>
-            )
-          }
-        </tbody>
+          
+          
+          )}
+
+
+
       </table>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 
-        <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">FEE</th>
-            <th scope="col">Size</th>
-            <th scope="col">BIT</th>
-            <th scope="col">WEIGHT</th>
-          </tr>
-        </thead>
-        <tbody>
-      
-        <tr>
-          <td>{details.fee}</td>
-          <td>{details.size}</td>
-          <td>{details.bits}</td>
-          <td>{details.weight}</td>
-        
-        </tr>
-        
-        
-        </tbody>
-      </table>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">FEE</th>
+                <th scope="col">Size</th>
+                <th scope="col">BIT</th>
+                <th scope="col">WEIGHT</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>{details.fee}</td>
+                <td>{details.size}</td>
+                <td>{details.bits}</td>
+                <td>{details.weight}</td>
+
+              </tr>
+
+
+            </tbody>
+          </table>
         </Modal.Body>
         <Modal.Footer>
           {/* <Button variant="secondary" onClick={handleClose}>
@@ -100,7 +106,7 @@ function App() {
         </Modal.Footer>
       </Modal>
 
-  
+
     </div>
 
 
